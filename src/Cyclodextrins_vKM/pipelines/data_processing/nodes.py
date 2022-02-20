@@ -46,7 +46,7 @@ def GetGibbsMol(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC )
+    MoI.calc_thermo(calc=CoI, n_cores=NoC)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
