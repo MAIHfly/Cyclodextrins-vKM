@@ -15,7 +15,7 @@ def ConvertMol(x):
     with open(Name,'w') as XYZfile:
         XYZfile.write(xnew)
 
-    MoI = ade.Molecule(Name, solvent_name=Solvent, charge=Charge)
+    MoI = ade.Molecule(str=Name, solvent_name=Solvent, charge=Charge)
 
     XYZfile.close()
     return(MoI)
