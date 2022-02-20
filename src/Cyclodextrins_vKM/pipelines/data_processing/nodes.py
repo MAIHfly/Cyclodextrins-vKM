@@ -12,10 +12,13 @@ def ConvertMol(x):
     if Solvent == '':
         Solvent = None
     xnew = x.decode("utf-8")
+    print(xnew)
+
     with open(Name,'w') as XYZfile:
         XYZfile.write(xnew)
 
     MoI = ade.Molecule(Name, solvent_name=Solvent, charge=Charge)
+    print(MoI)
 
     XYZfile.close()
     return(MoI)
