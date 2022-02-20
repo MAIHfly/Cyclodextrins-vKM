@@ -6,6 +6,9 @@ def ConvertMol(x):
     Solvent = input('If you got a solvent give us the name here if not just hit enter: ')
     Name = input('Give a name for the file ending in .xyz: ')
     Charge = input('Specify charge of the molecule: ')
+
+    Charge = int(Charge)
+
     if Solvent == '':
         Solvent = None
     xnew = x.decode("utf-8")
