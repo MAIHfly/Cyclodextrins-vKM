@@ -1,3 +1,4 @@
+from ast import Mult
 import autode as ade
 orca = ade.methods.ORCA()
 import numpy as np
@@ -6,8 +7,10 @@ def ConvertMol(x):
     Solvent = input('If you got a solvent give us the name here if not just hit enter: ')
     Name = input('Give a name for the file ending in .xyz: ')
     Charge = input('Specify charge of the molecule: ')
+    Multiplicity = input('Specify multiplicity of molecule: ')
 
     Charge = int(Charge)
+    Multiplicity = int(Multiplicity)
 
     if Solvent == '':
         Solvent = None
@@ -16,7 +19,7 @@ def ConvertMol(x):
     with open(Name,'w') as XYZfile:
         XYZfile.write(xnew)
 
-    MoI = ade.Molecule(Name, solvent_name=Solvent, charge=Charge)
+    MoI = ade.Molecule(Name, solvent_name=Solvent, charge=Charge, mult=Multiplicity)
 
     XYZfile.close()
 
