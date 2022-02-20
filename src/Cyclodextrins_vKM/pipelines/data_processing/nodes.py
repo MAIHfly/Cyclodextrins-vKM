@@ -20,9 +20,6 @@ def ConvertMol(x):
 
     XYZfile.close()
 
-    ade.methods.get_lmethod()
-    ade.methods.get_hmethod()
-
     return(MoI)
 
 def OptimizeMol(MoI):
@@ -46,6 +43,7 @@ def GetGibbsMol(MoI,CoI):
 
 def GetDeltGibbs(GibbsE1, GibbsE2):
     DeltGibbs = np.abs(GibbsE1 - GibbsE2)
+    print(DeltGibbs)
     return(DeltGibbs)
 
 def GetPka(DeltGibbsE):
