@@ -7,13 +7,17 @@ def ConvertMol(x):
     Solvent = input('If you got a solvent give us the name here if not just hit enter: ')
     Name = input('Give a name for the file ending in .xyz: ')
     Charge = input('Specify charge of the molecule: ')
-    Multiplicity = input('Specify multiplicity of molecule: ')
+    Multiplicity = input('Specify multiplicity of molecule (if not given it will be 1): ')
+
+    if Multiplicity == '':
+        Multiplicity = 1
 
     Charge = int(Charge)
     Multiplicity = int(Multiplicity)
 
     if Solvent == '':
         Solvent = None
+    
     xnew = x.decode("utf-8")
 
     with open(Name,'w') as XYZfile:
