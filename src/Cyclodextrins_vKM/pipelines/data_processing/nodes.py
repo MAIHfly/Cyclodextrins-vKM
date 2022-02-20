@@ -46,6 +46,7 @@ def GetGibbsMol(MoI,CoI):
 
 def GetDeltGibbs(GibbsE1, GibbsE2):
     DeltGibbs = np.abs(GibbsE1 - GibbsE2)
+    return(DelGibbs)
 
 def GetPka(DeltGibbsE):
     DeltGibbsEkJpM = 2600*DeltGibbsE
