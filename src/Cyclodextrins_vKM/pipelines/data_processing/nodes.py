@@ -1,11 +1,13 @@
 from ast import Mult
 from crypt import methods
 import autode as ade
+
 orcaSP_opt = ade.methods.ORCA()
 orcaSP_SP = ade.methods.ORCA()
-orcaSP_opt.keywords.sp = ade.OptKeywords(['HF-3c'])
-import numpy as np
+orcaSP_opt.keywords.opt = ade.OptKeywords(['HF-3c'])
 orcaSP_SP.keywords.sp = ade.SinglePointKeywords(['HF-3c'])
+
+import numpy as np
 
 def ConvertMol1(x):
     Solvent = 'acetonitrile'
