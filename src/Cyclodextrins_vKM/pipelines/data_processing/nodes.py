@@ -3,8 +3,8 @@ from ast import Mult
 import autode as ade
 import numpy as np
 orca = ade.methods.ORCA()
-orca.keywords.sp = ade.SinglePointKeywords(['HF-3c'])
-orca.keywords.opt = ade.OptKeywords(['HF-3c'])
+orca.keywords.sp = ade.SinglePointKeywords(['PBEPBE', 'def2SVP', 'Freq'])
+orca.keywords.opt = ade.OptKeywords(['PBEPBE', 'def2SVP', 'Freq'])
 orca.keywords.hess = ade.HessianKeywords(['PBEPBE', 'def2SVP', 'Freq'])
 
 def ConvertMol1(x):
