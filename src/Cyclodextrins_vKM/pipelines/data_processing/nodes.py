@@ -1,4 +1,5 @@
 from ast import Mult
+from crypt import methods
 import autode as ade
 orca = ade.methods.ORCA()
 import numpy as np
@@ -46,7 +47,7 @@ def GetGibbsMol1(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC)
+    MoI.calc_thermo(calc=CoI, n_cores=NoC, methods=orca)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
@@ -94,7 +95,7 @@ def GetGibbsMol2(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC)
+    MoI.calc_thermo(calc=CoI, n_cores=NoC,methods=orca)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
