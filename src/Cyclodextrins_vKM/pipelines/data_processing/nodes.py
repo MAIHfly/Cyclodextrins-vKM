@@ -1,7 +1,8 @@
 from ast import Mult
 from crypt import methods
 import autode as ade
-orca = ade.methods.ORCA()
+HF_3c_opt_nbo_orca = ade.methods.ORCA()
+HF_3c_opt_nbo_orca.keywords.sp = ade.OptKeywords(['HF-3c', 'NBO'])
 import numpy as np
 HF_3c_nbo_orca.keywords.sp = ade.SinglePointKeywords(['HF-3c', 'NBO'])
 
@@ -40,7 +41,7 @@ def CalculateMol1(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=HF_3c_nbo_orca.keywords.sp,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=HF_3c_opt_nbo_orca,keywords=HF_3c_nbo_orca.keywords.sp,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
@@ -48,7 +49,7 @@ def GetGibbsMol1(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC, methods=orca)
+    MoI.calc_thermo(calc=CoI, n_cores=NoC, methods=HF_3c_opt_nbo_orca)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
@@ -88,7 +89,7 @@ def CalculateMol2(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=HF_3c_opt_nbo_orca,keywords=HF_3c_nbo_orca.keywords.sp,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
@@ -96,7 +97,7 @@ def GetGibbsMol2(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC,methods=orca)
+    MoI.calc_thermo(calc=CoI, n_cores=NoC,methods=HF_3c_opt_nbo_orca)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
