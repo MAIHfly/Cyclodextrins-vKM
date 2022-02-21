@@ -35,7 +35,7 @@ def ConvertMol1(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol1(MoI):
     print(MoI)
-    MoI.optimise(method=orca,keywords=orca.keywords.opt)
+    MoI.optimise(method=orca)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol1(MoI):
@@ -83,7 +83,7 @@ def ConvertMol2(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol2(MoI):
     print(MoI)
-    MoI.optimise(method=orca, keywords=orca.keywords.opt)
+    MoI.optimise(method=orca)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol2(MoI):
