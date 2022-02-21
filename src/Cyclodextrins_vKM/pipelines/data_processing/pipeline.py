@@ -1,7 +1,7 @@
 from unicodedata import name
 from black import out
 from kedro.pipeline import Pipeline, node
-from .nodes import ConvertMol1, OptimizeMol1, CalculateMol1, GetGibbsMol1,ConvertMol2, OptimizeMol2, CalculateMol2, GetGibbsMol2, GetDeltGibbs, GetPka
+from .nodes import ConvertMol1, OptimizeMol1, CalculateMol1, GetGibbsMol1,ConvertMol2, OptimizeMol2, CalculateMol2, GetGibbsMol2, GetDeltGibbs, GetPka, PtFVal
 def create_pipeline(**kwargs):
     return Pipeline(
         [
@@ -14,6 +14,7 @@ def create_pipeline(**kwargs):
             node(func=CalculateMol2, inputs='Molecule_opt2', outputs='Calculation2', name='Single_Point_Calc2'),
             node(func=GetGibbsMol2, inputs=['Molecule_opt2','Calculation2'], outputs='GibbsE2', name='Get_Gibbs2'),
             node(func=GetDeltGibbs, inputs=['GibbsE1', 'GibbsE2'], outputs='DeltGibbs', name='Get_DeltGibbs'),
-            node(func=GetPka, inputs='DeltGibbs', outputs='pKa',name='Get_pKa')
+            node(func=GetPka, inputs='DeltGibbs', outputs='pKa',name='Get_pKa'),
+            node(func=PtFVal, inputs=['DeltGibbs','pKa'], outputs='File' name='print_to_file')
         ]
     )

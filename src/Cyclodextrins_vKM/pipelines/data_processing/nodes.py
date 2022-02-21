@@ -124,3 +124,4 @@ def PtFVal(DeltGibbsE, pKa):
         Valsfile.write(GibbsTxt)
         Valsfile.write(pKaTxt)
     Valsfile.close()
+    return(Valsfile)
