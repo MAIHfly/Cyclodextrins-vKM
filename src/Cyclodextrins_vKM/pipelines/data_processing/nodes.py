@@ -2,9 +2,9 @@ from ast import Mult
 from crypt import methods
 import autode as ade
 HF_3c_nbo_orca = ade.methods.ORCA()
-HF_3c_nbo_orca.keywords.sp = ade.OptKeywords(['HF-3c', 'NBO'])
+HF_3c_nbo_orca.keywords.sp = ade.OptKeywords(['HF-3c'])
 import numpy as np
-HF_3c_nbo_orca.keywords.sp = ade.SinglePointKeywords(['HF-3c', 'NBO'])
+HF_3c_nbo_orca.keywords.sp = ade.SinglePointKeywords(['HF-3c'])
 
 def ConvertMol1(x):
     Solvent = 'acetonitrile'
