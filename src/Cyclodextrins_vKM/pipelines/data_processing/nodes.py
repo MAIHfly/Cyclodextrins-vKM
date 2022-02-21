@@ -42,7 +42,7 @@ def CalculateMol1(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.sp,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
@@ -90,7 +90,7 @@ def CalculateMol2(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.sp,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
