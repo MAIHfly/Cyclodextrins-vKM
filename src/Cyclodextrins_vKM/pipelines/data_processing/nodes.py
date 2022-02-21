@@ -1,8 +1,10 @@
 # this used to work
 from ast import Mult
 import autode as ade
-orca = ade.methods.ORCA()
 import numpy as np
+orca = ade.methods.ORCA()
+orca.keywords.sp = ade.SinglePointKeywords(['HF-3c'])
+orca.keywords.opt = ade.OptKeywords(['HF-3c'])
 
 def ConvertMol1(x):
     Solvent = 'acetonitrile'
@@ -32,14 +34,14 @@ def ConvertMol1(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol1(MoI):
     print(MoI)
-    MoI.optimise(method=ade.methods.XTB())
+    MoI.optimise(method=orca,keywords=orca.keywords.opt)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol1(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.sp,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
@@ -80,14 +82,14 @@ def ConvertMol2(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol2(MoI):
     print(MoI)
-    MoI.optimise(method=ade.methods.XTB())
+    MoI.optimise(method=orca, keywords=orca.keywords.opt)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol2(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.sp,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
