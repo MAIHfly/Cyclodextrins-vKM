@@ -4,9 +4,7 @@ import autode as ade
 import numpy as np
 orca = ade.methods.ORCA()
 xtb = ade.methods.XTB()
-orca.keywords.sp = ade.SinglePointKeywords(['HF-3c'])
-orca.keywords.opt = ade.OptKeywords(['HF-3c'])
-orca.keywords.hess = ade.HessianKeywords(['HF-3c'])
+
 
 def ConvertMol1(x):
     Solvent = 'acetonitrile'
