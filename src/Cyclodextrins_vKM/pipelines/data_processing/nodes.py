@@ -43,7 +43,7 @@ def CalculateMol1(MoI):
     if NoC == '':
         NoC = 1
     CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
-    CoI.output.filename = MoI.name+'.out'
+    CoI.output.filename = MoI.name+'.hess'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
 def GetGibbsMol1(MoI,CoI):
@@ -91,7 +91,7 @@ def CalculateMol2(MoI):
     if NoC == '':
         NoC = 1
     CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orca,keywords=orca.keywords.hess,n_cores=NoC)
-    CoI.output.filename = MoI.name+'.out'
+    CoI.output.filename = MoI.name+'.hess'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
 def GetGibbsMol2(MoI,CoI):
