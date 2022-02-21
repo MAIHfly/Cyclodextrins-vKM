@@ -1,10 +1,11 @@
 from ast import Mult
 from crypt import methods
 import autode as ade
-HF_3c_nbo_orca = ade.methods.ORCA()
-HF_3c_nbo_orca.keywords.sp = ade.OptKeywords(['HF', 'def2-SVP', 'def2/J', 'RIJCOSX'])
+orcaSP_opt = ade.methods.ORCA()
+orcaSP_SP = ade.methods.ORCA()
+orcaSP_opt.keywords.sp = ade.OptKeywords(['HF', 'def2-SVP', 'def2/J', 'RIJCOSX'])
 import numpy as np
-HF_3c_nbo_orca.keywords.sp = ade.SinglePointKeywords(['RI-MP3', 'def2-SVP', 'def2/J', 'RIJCOSX', 'def2-SVP/C'])
+orcaSP_SP.keywords.sp = ade.SinglePointKeywords(['HF', 'def2-SVP', 'def2/J', 'RIJCOSX'])
 
 def ConvertMol1(x):
     Solvent = 'acetonitrile'
@@ -34,14 +35,14 @@ def ConvertMol1(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol1(MoI):
     print(MoI)
-    MoI.optimise(method=ade.methods.XTB())
+    MoI.optimise(method=orcaSP_opt)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol1(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=HF_3c_nbo_orca,keywords=HF_3c_nbo_orca.keywords.sp,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orcaSP_SP,keywords=orcaSP_SP.keywords.sp,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
@@ -49,7 +50,7 @@ def GetGibbsMol1(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC, method=HF_3c_nbo_orca)
+    MoI.calc_thermo(calc=CoI, n_cores=NoC)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
@@ -82,14 +83,14 @@ def ConvertMol2(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol2(MoI):
     print(MoI)
-    MoI.optimise(method=ade.methods.XTB())
+    MoI.optimise(method=orcaSP_opt)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol2(MoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=HF_3c_nbo_orca,keywords=HF_3c_nbo_orca.keywords.sp,n_cores=NoC)
+    CoI = ade.Calculation(name=MoI.name,molecule=MoI,method=orcaSP_SP,keywords=orcaSP_SP.keywords.sp,n_cores=NoC)
     CoI.output.filename = MoI.name+'.out'
     return(CoI)
 # get Gibbs free energy using the calc_thermo property
@@ -97,7 +98,7 @@ def GetGibbsMol2(MoI,CoI):
     NoC = input('How many cores do you have/want to use if you only have 1 hit enter: ')
     if NoC == '':
         NoC = 1
-    MoI.calc_thermo(calc=CoI, n_cores=NoC, method=HF_3c_nbo_orca)
+    MoI.calc_thermo(calc=CoI, n_cores=NoC)
     print(f'G = {MoI.free_energy:.6f} Ha')
     GibbsE = MoI.free_energy
     return(GibbsE)
