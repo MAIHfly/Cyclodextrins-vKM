@@ -1,8 +1,8 @@
 from ast import Mult
 from crypt import methods
 import autode as ade
-HF_3c_opt_nbo_orca = ade.methods.ORCA()
-HF_3c_opt_nbo_orca.keywords.sp = ade.OptKeywords(['HF-3c', 'NBO'])
+HF_3c_nbo_orca = ade.methods.ORCA()
+HF_3c_nbo_orca.keywords.sp = ade.OptKeywords(['HF-3c', 'NBO'])
 import numpy as np
 HF_3c_nbo_orca.keywords.sp = ade.SinglePointKeywords(['HF-3c', 'NBO'])
 
