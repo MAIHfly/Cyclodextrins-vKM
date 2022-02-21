@@ -101,7 +101,7 @@ def GetGibbsMol2(MoI,CoI):
 
 # get delta gibbs free energy
 def GetDeltGibbs(GibbsE1, GibbsE2):
-    DeltGibbs = np.abs(GibbsE1 - GibbsE2)
+    DeltGibbs = GibbsE1 - GibbsE2
     print(DeltGibbs)
     return(DeltGibbs)
 # get pKa (there is an error here so result calculation will be done manually)
@@ -116,3 +116,11 @@ def GetPka(DeltGibbsE):
     pKa = -1*np.log10(K)
     print(f'pKa = {pKa}')
     return(pKa)
+
+def PtFVal(DeltGibbsE, pKa):
+    GibbsTxt = f'DeltG = {DeltGibbsE} Ha '
+    pKaTxt = f'pKa = {pKa} '
+    with open('ValsofInt.txt',w) as Valsfile:
+        Valsfile.write(GibbsTxt)
+        Valsfile.write(pKaTxt)
+    Valsfile.close()
