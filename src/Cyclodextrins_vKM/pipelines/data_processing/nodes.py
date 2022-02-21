@@ -121,7 +121,7 @@ def GetPka(DeltGibbsE):
 def PtFVal(DeltGibbsE, pKa):
     GibbsTxt = f'DeltG = {DeltGibbsE} Ha '
     pKaTxt = f'pKa = {pKa} '
-    with open('ValsofInt.txt',w) as Valsfile:
+    with open('ValsofInt.txt','w') as Valsfile:
         Valsfile.write(GibbsTxt)
         Valsfile.write(pKaTxt)
     Valsfile.close()
