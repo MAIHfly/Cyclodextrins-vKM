@@ -55,7 +55,7 @@ def GetGibbsMol1(MoI,CoI):
 def ConvertMol2(x):
     Solvent = 'acetonitrile'
     Name = 'Molecule2.xyz'
-    Charge = 1
+    Charge = 0
     Multiplicity = 1
 
     if Multiplicity == '':
