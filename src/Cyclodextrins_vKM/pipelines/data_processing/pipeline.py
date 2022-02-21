@@ -15,6 +15,6 @@ def create_pipeline(**kwargs):
             node(func=GetGibbsMol2, inputs=['Molecule_opt2','Calculation2'], outputs='GibbsE2', name='Get_Gibbs2'),
             node(func=GetDeltGibbs, inputs=['GibbsE1', 'GibbsE2'], outputs='DeltGibbs', name='Get_DeltGibbs'),
             node(func=GetPka, inputs='DeltGibbs', outputs='pKa',name='Get_pKa'),
-            node(func=PtFVal, inputs=['DeltGibbs','pKa'], outputs='File' name='print_to_file')
+            node(func=PtFVal, inputs=['DeltGibbs','pKa'], outputs='File', name='print_to_file')
         ]
     )
