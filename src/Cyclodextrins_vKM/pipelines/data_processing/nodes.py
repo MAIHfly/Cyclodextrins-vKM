@@ -3,6 +3,7 @@ from ast import Mult
 import autode as ade
 import numpy as np
 orca = ade.methods.ORCA()
+xtb = ade.methods.XTB()
 orca.keywords.sp = ade.SinglePointKeywords(['HF-3c'])
 orca.keywords.opt = ade.OptKeywords(['HF-3c'])
 orca.keywords.hess = ade.HessianKeywords(['HF-3c'])
@@ -35,7 +36,7 @@ def ConvertMol1(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol1(MoI):
     print(MoI)
-    MoI.optimise(method=orca)
+    MoI.optimise(method=xtb)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol1(MoI):
@@ -83,7 +84,7 @@ def ConvertMol2(x):
 # optimize the molecular structure method can be changed
 def OptimizeMol2(MoI):
     print(MoI)
-    MoI.optimise(method=orca)
+    MoI.optimise(method=xtb)
     return(MoI)
 # Run Calculation, specify the number of cores for the calculation, and output calculation to files
 def CalculateMol2(MoI):
